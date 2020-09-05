@@ -1,6 +1,5 @@
 $(function () {});
   
-
 /* Declare Variables */
 var today = moment().format("dddd, MMMM Do");
 
@@ -20,9 +19,10 @@ var planWorkday = [
 ];
 
 /* Local Storage check */
-var checkPrevious = JSON.parse(localStorage.getItem("dayPlanner"));
-if (checkPrevious !== null) {
-  planWorkday = checkPrevious;
+var workEvents = JSON.parse(localStorage.getItem("workDay"));
+console.log("workEvents: " + workEvents);
+if (workEvents) {
+  planWorkday = workEvents;
 }
 
 /* Current Day */
@@ -31,7 +31,7 @@ $("#currentDay").text(today);
 /* Create rows */
 planWorkday.forEach(function(timeBlock, index) {
 	var timeLabel = timeBlock.time;
-	var blockColor = colorMe(timeLabel);
+	var blockColor = colorRow(timeLabel);
 	var row =
 		'<div class="time-block" id="' +
 		index +
@@ -43,12 +43,12 @@ planWorkday.forEach(function(timeBlock, index) {
 		timeBlock.event +
 		'</textarea><div class="col-sm col-lg-1 input-group-append"><button class="saveBtn btn-block" type="submit"><i class="fas fa-save"></i></button></div></div></div>';
 
-	// show entry rows
+	/* Adding rows to container div */
 	$(".container").append(row);
 });
 
 /* Color rows based on current time */
-function colorMe(time) {
+function colorRow(time) {
 	var planNow = moment(now, "H A");
 	var planEntry = moment(time, "H A");
 	if (planNow.isBefore(planEntry) === true) {
@@ -59,6 +59,25 @@ function colorMe(time) {
 		return "present";
 	}
 }
+
+/* Save Events */
+$(".saveBtn").on("click", function() {
+	var blockID = parseInt(
+		$(this)
+			.closest(".time-block")
+			.attr("id")
+	);
+	var userEntry = $.trim(
+		$(this)
+			.parent()
+			.siblings("textarea")
+			.val()
+	);
+	planWorkday[blockID].event = userEntry;
+
+	/* Set local storage */
+	localStorage.setItem("workDay", JSON.stringify(planWorkday));
+});
 
 console.log("Today: " + today);
 console.log("now: " + now);
