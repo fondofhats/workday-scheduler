@@ -49,8 +49,11 @@ An application that will run in the browser and feature dynamically updated HTML
 
 <br>
 
+<!--
 ## Version
-[![Version](https://badge.fury.io/gh/tterb%2FHyde.svg)](https://badge.fury.io/gh/fondofhats%2wordday-scheduler)
+[![Version](https://badge.fury.io/gh/fondofhats%2workday-scheduler.svg)](https://badge.fury.io/gh/fondofhats%2wordday-scheduler)
+[![GitHub version](https://badge.fury.io/gh/fondofhats%2Fbadges.svg)](http://badge.fury.io/gh/fondofhats%2workday-scheuler)
+-->
 
 ## Issues
 [![GitHub issues](https://img.shields.io/github/issues/fondofhats/workday-scheduler.svg)](https://GitHub.com/fondofhats/workday-scheduler/issues/)
