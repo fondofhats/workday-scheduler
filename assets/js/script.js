@@ -20,7 +20,6 @@ var planWorkday = [
 
 /* Local Storage check */
 var workEvents = JSON.parse(localStorage.getItem("workDay"));
-console.log("workEvents: " + workEvents);
 if (workEvents) {
   planWorkday = workEvents;
 }
@@ -78,6 +77,3 @@ $(".saveBtn").on("click", function() {
 	/* Set local storage */
 	localStorage.setItem("workDay", JSON.stringify(planWorkday));
 });
-
-console.log("Today: " + today);
-console.log("now: " + now);
