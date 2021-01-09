@@ -1,4 +1,4 @@
-# Word Day Scheduler
+# Work Day Scheduler
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/fondofhats/workDay-scheduler)
 
